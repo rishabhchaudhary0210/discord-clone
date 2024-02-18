@@ -14,7 +14,7 @@ import {
 
 export function ModeToggle() {
   const { setTheme } = useTheme()
-
+  //shadcn docs copy paste
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

@@ -1,8 +1,10 @@
 import { authMiddleware } from "@clerk/nextjs";
  
+//clerk auth docs copy paste
+
 export default authMiddleware({
   // Routes that can be accessed while signed out
-  publicRoutes: ['/anyone-can-visit-this-route', ],
+  publicRoutes: ['/anyone-can-visit-this-route', "/api/uploadthing"],
   // Routes that can always be accessed, and have
   // no authentication information
   ignoredRoutes: ['/no-auth-in-this-route'],

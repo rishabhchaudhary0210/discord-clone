@@ -19,9 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    //required to use Auth from clerk anything wrapped in this is covered under clerk auth
     <ClerkProvider >
       <html lang="en" suppressHydrationWarning >
         <body className={cn(openSans.className, "bg-white dark:bg-[#313338]")}>
+          {/* Required for shadcn theme changing  */}
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
