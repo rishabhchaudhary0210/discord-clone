@@ -7,6 +7,7 @@ import ThemeProvider from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { SocketProvider } from "@/components/providers/socket-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -24,18 +25,20 @@ export default function RootLayout({
     //required to use Auth from clerk anything wrapped in this is covered under clerk auth
     <ClerkProvider >
       <html lang="en" suppressHydrationWarning >
-        <body className={cn(openSans.className, "bg-white dark:bg-[#313338]")}>
+        <body className={cn(openSans.className, "bg-white dark:bg-[#313338] h-full")}>
           {/* Required for shadcn theme changing  */}
           <SocketProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              enableSystem={false}
-              storageKey="discord-theme"
-            >
-              <ModalProvider />
-              {children}
-            </ThemeProvider>
+            <QueryProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="dark"
+                enableSystem={false}
+                storageKey="discord-theme"
+              >
+                <ModalProvider />
+                {children}
+              </ThemeProvider>
+            </QueryProvider>
           </SocketProvider>
         </body>
       </html>
