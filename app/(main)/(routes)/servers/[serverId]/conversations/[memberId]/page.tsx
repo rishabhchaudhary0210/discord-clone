@@ -14,7 +14,8 @@ interface MemberIdPageProps {
     serverId: string;
   },
   searchParams: {
-    video?: boolean
+    video?: boolean,
+    audio?: boolean,
   }
 }
 
@@ -62,7 +63,7 @@ const MemberIdPage = async ({
         type="conversation"
         serverId={params.serverId}
       />
-      {!searchParams.video && (
+      {!searchParams.video && !searchParams.audio && (
         <>
 
           <ChatMessages
@@ -88,8 +89,15 @@ const MemberIdPage = async ({
           />
         </>
       )}
+      {searchParams.audio && (
+        <MediaRoom
+          chatId={conversation.id}
+          video={false}
+          audio={true}
+        />
+      )}
       {searchParams.video && (
-        <MediaRoom 
+        <MediaRoom
           chatId={conversation.id}
           video={true}
           audio={false}
